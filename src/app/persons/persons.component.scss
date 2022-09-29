@@ -1,0 +1,50 @@
+.container {
+    display: flex;
+    height: 100%;
+
+    .person-list {
+        margin-top: 10px;
+        width: 250px;
+        padding: 30px 40px;
+        overflow: auto;
+        flex-shrink: 0;
+
+        .person-item {
+            border-radius: 3px;
+            margin-bottom: 15px;
+            padding: 10px;
+            text-align: center;
+            background-color: rgb(242, 242, 242);
+            position: relative;
+
+            img {
+                height: 15px;
+                width: 15px;
+                position: absolute;
+                right: 10px;
+
+                &[title=edit] {
+                    right: 35px;
+                }
+            }
+        }
+    }
+}
+
+table {
+    align-self: flex-start;
+    border-spacing: 4px;
+    width: 100%;
+    margin: 30px;
+
+    td, th {
+        background-color: rgb(229, 229, 229);
+        border-radius: 3px;
+        padding: 15px 30px;
+    }
+    
+    td {
+        text-align: center;
+        color: #03201d;
+    }
+}

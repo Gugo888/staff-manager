@@ -1,0 +1,43 @@
+<form [formGroup]="personForm">
+    <div>
+        <label>First Name</label>
+        <input placeholder="First Name" formControlName="firstName">
+        <span *ngIf="firstName.invalid && firstName.touched">required field</span>
+    </div>
+    <div>
+        <label>Last Name</label>
+        <input placeholder="Last Name" formControlName="lastName">
+        <span *ngIf="lastName.invalid && lastName.touched">required field</span>
+    </div>
+    <div>
+        <label>Age</label>
+        <input placeholder="Age" formControlName="age" [readonly]="!isNewPerson">
+        <ng-container *ngIf="age.invalid && age.touched">
+            <span *ngIf="age.hasError('required')">required field</span>
+            <span *ngIf="salary.hasError('NaN')">please write a valid number</span>
+            <span *ngIf="age.hasError('range')">Min age {{age.getError('range').min}} | Max age
+                {{age.getError('range').max}} | Actual age {{age.getError('range').actual}} </span>
+
+        </ng-container>
+    </div>
+    <div>
+        <label>Salary</label>
+        <input placeholder="Salary" formControlName="salary">
+        <ng-container *ngIf="salary.invalid && salary.touched">
+            <span *ngIf="salary.hasError('required')">required field</span>
+            <span *ngIf="salary.hasError('min')">please write a positive number</span>
+            <span *ngIf="salary.hasError('NaN')">please write a valid number</span>
+        </ng-container>
+    </div>
+    <div>
+        <label>Start Work</label>
+        <input type="date" placeholder="Start Work" formControlName="startWork">
+        <span *ngIf="startWork.invalid && startWork.touched">required field</span>
+    </div>
+
+    <div>
+        <button class="pointer" routerLink="/persons">Cancel</button>
+        <button class="pointer" [disabled]="personForm.invalid" (click)="save()">Save</button>
+    </div>
+
+</form>

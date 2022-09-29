@@ -1,0 +1,33 @@
+<div class="container">
+    <div class="person-list">
+        <div class="person-item pointer" [routerLink]="['/person', 'new']">
+            <img src="/assets/add.png">
+            <span>Add New Person</span>
+        </div>
+        <div class="person-item pointer light-shadow" [class.dark-shadow]="selectedPerson === person"
+            *ngFor="let person of persons" (click)="selectedPerson = person">
+            {{person.firstName}}
+            <img [routerLink]="['/person', person.id]" src="/assets/edit.png" title="edit"
+                *ngIf="person === selectedPerson">
+            <img src="/assets/delete.png" title="delete" (click)="deletePerson(person.id)">
+        </div>
+
+    </div>
+
+    <table>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Age</th>
+            <th>Salary</th>
+            <th>Start Work</th>
+        </tr>
+        <tr>
+            <td>{{selectedPerson.firstName}}</td>
+            <td>{{selectedPerson.lastName}}</td>
+            <td>{{selectedPerson.age}}</td>
+            <td>{{selectedPerson.salary}}</td>
+            <td>{{selectedPerson.startWork}}</td>
+        </tr>
+    </table>
+</div>
